@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://yoel74x8idj6"]
+
+[ext_resource type="PackedScene" uid="uid://bd2drs85usk12" path="res://paddle.tscn" id="1_0vrqp"]
+[ext_resource type="Script" path="res://main.gd" id="1_sxpd2"]
+[ext_resource type="PackedScene" uid="uid://i05p4niqkbgc" path="res://ball.tscn" id="3_dwoyy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ufnw"]
+size = Vector2(1920, 20)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_sxpd2")
+
+[node name="player1" parent="." instance=ExtResource("1_0vrqp")]
+position = Vector2(103, 497)
+scale = Vector2(1, 5)
+
+[node name="player2" parent="." instance=ExtResource("1_0vrqp")]
+position = Vector2(1802, 508)
+scale = Vector2(1, 5)
+
+[node name="ball" parent="." instance=ExtResource("3_dwoyy")]
+position = Vector2(933, 506)
+
+[node name="ball2" parent="." instance=ExtResource("3_dwoyy")]
+position = Vector2(933, 506)
+
+[node name="wall1" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall1"]
+position = Vector2(960, 0)
+shape = SubResource("RectangleShape2D_2ufnw")
+
+[node name="wall2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+position = Vector2(960, 1080)
+shape = SubResource("RectangleShape2D_2ufnw")
+
+[node name="p1_score" type="Label" parent="."]
+offset_left = 811.0
+offset_top = 38.0
+offset_right = 856.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="p2_score" type="Label" parent="."]
+offset_left = 1058.0
+offset_top = 38.0
+offset_right = 1102.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+
+[connection signal="left_screen_on_left" from="ball" to="." method="_on_ball_left_screen_on_left"]
+[connection signal="left_screen_on_right" from="ball" to="." method="_on_ball_left_screen_on_right"]
+[connection signal="left_screen_on_left" from="ball2" to="." method="_on_ball_left_screen_on_left"]
+[connection signal="left_screen_on_right" from="ball2" to="." method="_on_ball_left_screen_on_right"]
