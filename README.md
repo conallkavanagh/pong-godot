@@ -1,6 +1,6 @@
 # Pong Clone
 
-A little pong clone I made using the !(Godot game engine)[https://godotengine.org/]
+A little pong clone I made using the [Godot game engine](https://godotengine.org/)
 
 ## Controls
 Player 1: W and S
